@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
-  "name": "start-cpp-vcpkg-template",
+  "name": "data-backup-module",
   "version-string": "0.1.0",
   "dependencies": [
     "gflags",

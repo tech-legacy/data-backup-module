@@ -31,7 +31,7 @@
 *.out
 *.app
 
-# start-cpp-vcpkg-template
+# data-backup-module
 vcpkg_installed
 build/*
 build-*/*
