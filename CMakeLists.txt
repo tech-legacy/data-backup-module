@@ -6,7 +6,7 @@
 ## 
 #############################################################################
 
-message("[start-cpp-vcpkg-template] -------- start")
+message("[data-backup-module] -------- start")
 cmake_minimum_required(VERSION 3.7.2)
 set(CMAKE_CXX_STANDARD 11)
 set(CXX_STANDARD_REQUIRED ON)
@@ -39,7 +39,7 @@ endif()
 # 可选 vcpkg 编译配置集: https://learn.microsoft.com/en-us/vcpkg/users/triplets
 if(NOT DEFINED VCPKG_TARGET_TRIPLET)
     if(WIN32)
-        set(VCPKG_TARGET_TRIPLET "x64-windows-static-md")
+        set(VCPKG_TARGET_TRIPLET "x64-windows")
     elseif(APPLE)
         set(VCPKG_TARGET_TRIPLET "arm64-osx")
     elseif(UNIX)
@@ -48,7 +48,7 @@ if(NOT DEFINED VCPKG_TARGET_TRIPLET)
         message(FATAL_ERROR "Unsupported platform. Please define VCPKG_TARGET_TRIPLET manually.")
     endif()
 endif()
-message(STATUS "[start-cpp-vcpkg-template] VCPKG_TARGET_TRIPLET : ${VCPKG_TARGET_TRIPLET}")
+message(STATUS "[data-backup-module] VCPKG_TARGET_TRIPLET : ${VCPKG_TARGET_TRIPLET}")
 
 # 使用 vcpkg 工具链，需要在 project 之前设置
 if(DEFINED ENV{VCPKG_ROOT})
@@ -68,14 +68,14 @@ else()
     endif()
     set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Vcpkg toolchain file")
 endif()
-message(STATUS "[start-cpp-vcpkg-template] CMAKE_TOOLCHAIN_FILE : ${CMAKE_TOOLCHAIN_FILE}")
+message(STATUS "[data-backup-module] CMAKE_TOOLCHAIN_FILE : ${CMAKE_TOOLCHAIN_FILE}")
 
-project ("start-cpp-vcpkg-template")
+project ("data-backup-module")
 
-message(STATUS "[start-cpp-vcpkg-template] CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
-message(STATUS "[start-cpp-vcpkg-template] CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
-message(STATUS "[start-cpp-vcpkg-template] CMAKE_CURRENT_SOURCE_DIR : ${CMAKE_CURRENT_SOURCE_DIR}")
-message(STATUS "[start-cpp-vcpkg-template] PROJECT_SOURCE_DIR : ${PROJECT_SOURCE_DIR}")
+message(STATUS "[data-backup-module] CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
+message(STATUS "[data-backup-module] CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+message(STATUS "[data-backup-module] CMAKE_CURRENT_SOURCE_DIR : ${CMAKE_CURRENT_SOURCE_DIR}")
+message(STATUS "[data-backup-module] PROJECT_SOURCE_DIR : ${PROJECT_SOURCE_DIR}")
 
 # src
 include_directories(${PROJECT_SOURCE_DIR}/sample-tools)
@@ -90,4 +90,4 @@ include(CTest) # 支持 ctest 命令
 include_directories(${PROJECT_SOURCE_DIR}/sample-tools-test)
 add_subdirectory(sample-tools-test)
 
-message("[start-cpp-vcpkg-template] -------- done")
+message("[data-backup-module] -------- done")
