@@ -6,7 +6,7 @@
 ## 
 #############################################################################
 
-project(sample-tools)
+project(data-backup)
 message("[${PROJECT_NAME}] -------- start")
 
 message(STATUS "[${PROJECT_NAME}] PROJECT_SOURCE_DIR : ${PROJECT_SOURCE_DIR}")

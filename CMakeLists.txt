@@ -7,11 +7,11 @@
 #############################################################################
 
 message("[data-backup-module] -------- start")
-cmake_minimum_required(VERSION 3.7.2)
-set(CMAKE_CXX_STANDARD 11)
+cmake_minimum_required(VERSION 3.16)
+set(CMAKE_CXX_STANDARD 20)
 set(CXX_STANDARD_REQUIRED ON)
 
-if (WIN32)
+if(WIN32)
     # 源码使用 utf-8 编码格式编译
     add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
     add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
@@ -20,7 +20,7 @@ if (WIN32)
     # 手动启用 /permissive- 标准一致性模式（VS2017+）
     # 手动启用 /EHsc C++ 异常: https://learn.microsoft.com/zh-cn/cpp/build/reference/eh-exception-handling-model
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc /permissive- /Zc:__cplusplus")
-elseif (APPLE)
+elseif(APPLE)
     # 编译动态库需要设置-fPIC
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
@@ -70,7 +70,7 @@ else()
 endif()
 message(STATUS "[data-backup-module] CMAKE_TOOLCHAIN_FILE : ${CMAKE_TOOLCHAIN_FILE}")
 
-project ("data-backup-module")
+project("data-backup-module")
 
 message(STATUS "[data-backup-module] CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
 message(STATUS "[data-backup-module] CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
@@ -78,16 +78,12 @@ message(STATUS "[data-backup-module] CMAKE_CURRENT_SOURCE_DIR : ${CMAKE_CURRENT_
 message(STATUS "[data-backup-module] PROJECT_SOURCE_DIR : ${PROJECT_SOURCE_DIR}")
 
 # src
-include_directories(${PROJECT_SOURCE_DIR}/sample-tools)
-include_directories(${PROJECT_SOURCE_DIR}/sample-dynamic-lib)
-include_directories(${PROJECT_SOURCE_DIR}/sample-main)
-add_subdirectory(sample-tools)
-add_subdirectory(sample-dynamic-lib)
-add_subdirectory(sample-main)
+include_directories(${PROJECT_SOURCE_DIR}/src)
+add_subdirectory(src)
 
 # test
 include(CTest) # 支持 ctest 命令
-include_directories(${PROJECT_SOURCE_DIR}/sample-tools-test)
-add_subdirectory(sample-tools-test)
+include_directories(${PROJECT_SOURCE_DIR}/test)
+add_subdirectory(test)
 
 message("[data-backup-module] -------- done")

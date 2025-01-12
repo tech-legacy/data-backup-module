@@ -6,7 +6,7 @@
 ## 
 #############################################################################
 
-project("sample-tools-test")
+project("data-backup-test")
 message("[${PROJECT_NAME}] -------- start")
 
 message(STATUS "[${PROJECT_NAME}] PROJECT_SOURCE_DIR : ${PROJECT_SOURCE_DIR}")
@@ -19,11 +19,10 @@ add_executable(${PROJECT_NAME}
     common_test.cpp
     fmt_test.cpp
     hardware_test.cpp
-    platform_test.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}
-    PRIVATE sample-tools
+    PRIVATE data-backup
     PRIVATE GTest::gtest_main
 )
 
