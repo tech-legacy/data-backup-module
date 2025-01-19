@@ -5,7 +5,16 @@
 ** Support	: zxffffffff@outlook.com, 1337328542@qq.com
 **
 ****************************************************************************/
-#include <gtest/gtest.h>
+#pragma once
+#include "define.h"
+#include <string>
+#include <cstring>
+#include <vector>
+#include <memory>
+#include <stdexcept>
+#include <random>
+#include <cassert>
+#include <sstream>
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1500 && _MSC_VER < 1900)
 /* msvc兼容utf-8: https://support.microsoft.com/en-us/kb/980263 */
@@ -15,7 +24,12 @@
 #pragma warning(disable : 4566)
 #endif
 
-TEST(Common, test)
+class DATA_BACKUP_LIB_API DataBackup
 {
-    ASSERT_EQ(1 + 1, 2);
-}
+private:
+    std::unique_ptr<class DataBackupPriv> priv;
+
+public:
+    DataBackup();
+    virtual ~DataBackup();
+};

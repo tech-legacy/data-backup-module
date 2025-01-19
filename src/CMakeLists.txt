@@ -41,11 +41,18 @@ file(GLOB_RECURSE include_headers
     common/impl/progschj-ThreadPool.h
     common/impl/stl_threadpool_impl.h # use "progschj-ThreadPool.h"
     common/impl/stl_threadtimer_impl.h
+    define.h
+    DataBackup.h
 )
 
 add_library(${PROJECT_NAME} SHARED
-    common/sample/sample_tools.cpp # needed
+    DataBackup.cpp
     ${include_headers}
+)
+
+# dynamic 导出宏
+target_compile_definitions(${PROJECT_NAME}
+    PRIVATE DATA_BACKUP_LIB_EXPORT
 )
 
 target_link_libraries(${PROJECT_NAME}
