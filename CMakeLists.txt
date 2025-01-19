@@ -78,14 +78,14 @@ message(STATUS "[data-backup-module] CMAKE_CURRENT_SOURCE_DIR : ${CMAKE_CURRENT_
 message(STATUS "[data-backup-module] PROJECT_SOURCE_DIR : ${PROJECT_SOURCE_DIR}")
 
 # 2nd-party
-set(simple-cryptography-install "${CMAKE_CURRENT_SOURCE_DIR}/../simple-cryptography/install-${VCPKG_TARGET_TRIPLET}-${CMAKE_BUILD_TYPE}")
-set(simple-cryptography-include "${simple-cryptography-install}/include")
-set(simple-cryptography-lib "${simple-cryptography-install}/lib")
-set(simple-cryptography-bin "${simple-cryptography-install}/bin")
-message(STATUS "[data-backup-module] simple-cryptography-install: ${simple-cryptography-install}")
-include_directories(${simple-cryptography-include})
-link_directories(${simple-cryptography-lib})
-link_directories(${simple-cryptography-bin})
+# set(simple-cryptography-install "${CMAKE_CURRENT_SOURCE_DIR}/../simple-cryptography/install-${VCPKG_TARGET_TRIPLET}-${CMAKE_BUILD_TYPE}")
+# set(simple-cryptography-include "${simple-cryptography-install}/include")
+# set(simple-cryptography-lib "${simple-cryptography-install}/lib")
+# set(simple-cryptography-bin "${simple-cryptography-install}/bin")
+# message(STATUS "[data-backup-module] simple-cryptography-install: ${simple-cryptography-install}")
+# include_directories(${simple-cryptography-include})
+# link_directories(${simple-cryptography-lib})
+# link_directories(${simple-cryptography-bin})
 
 # src
 include_directories(${PROJECT_SOURCE_DIR}/src)

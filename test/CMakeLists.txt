@@ -22,7 +22,6 @@ add_executable(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
     PRIVATE data-backup
     PRIVATE GTest::gtest_main
-    PUBLIC simple-cryptography
 )
 
 target_include_directories(${PROJECT_NAME}

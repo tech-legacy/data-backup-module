@@ -8,6 +8,7 @@
     "boost-beast",
     "boost-url",
     "boost-uuid",
+    "boost-filesystem",
     "nlohmann-json",
     "tinyxml2",
     "fmt"

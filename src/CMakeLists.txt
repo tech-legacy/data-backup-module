@@ -12,11 +12,10 @@ message("[${PROJECT_NAME}] -------- start")
 message(STATUS "[${PROJECT_NAME}] PROJECT_SOURCE_DIR : ${PROJECT_SOURCE_DIR}")
 
 # 引入 boost (大部分 header-only 的库不需要 link)
-# find_package(Boost REQUIRED)
-# message(STATUS "[${PROJECT_NAME}] Boost_VERSION_STRING : ${Boost_VERSION_STRING}")
-# message(STATUS "[${PROJECT_NAME}] Boost_INCLUDE_DIRS : ${Boost_INCLUDE_DIRS}")
-# message(STATUS "[${PROJECT_NAME}] Boost_LIBRARY_DIRS : ${Boost_LIBRARY_DIRS}")
-# include_directories(${Boost_INCLUDE_DIRS})
+find_package(Boost REQUIRED)
+message(STATUS "[${PROJECT_NAME}] Boost_VERSION_STRING : ${Boost_VERSION_STRING}")
+message(STATUS "[${PROJECT_NAME}] Boost_INCLUDE_DIRS : ${Boost_INCLUDE_DIRS}")
+message(STATUS "[${PROJECT_NAME}] Boost_LIBRARY_DIRS : ${Boost_LIBRARY_DIRS}")
 
 # 引入 nlohmann-json
 find_package(nlohmann_json CONFIG REQUIRED)
@@ -29,31 +28,32 @@ find_package(fmt CONFIG REQUIRED)
 
 # Public 头文件
 file(GLOB_RECURSE include_headers
-    cpp_version.h
-    cpp_def.h
-    common.h
-    platform.h
-    hardware.h
-    chrono.h
-    log.h
-    benchmark.h
-    interface/threadpool_interface.h
-    interface/threadtimer_interface.h
-    impl/progschj-ThreadPool.h
-    impl/stl_threadpool_impl.h # use "progschj-ThreadPool.h"
-    impl/stl_threadtimer_impl.h
+    common/cpp_version.h
+    common/cpp_def.h
+    common/common.h
+    common/platform.h
+    common/hardware.h
+    common/chrono.h
+    common/log.h
+    common/benchmark.h
+    common/interface/threadpool_interface.h
+    common/interface/threadtimer_interface.h
+    common/impl/progschj-ThreadPool.h
+    common/impl/stl_threadpool_impl.h # use "progschj-ThreadPool.h"
+    common/impl/stl_threadtimer_impl.h
 )
 
 add_library(${PROJECT_NAME} SHARED
-    sample/sample_tools.cpp # needed
+    common/sample/sample_tools.cpp # needed
     ${include_headers}
 )
 
 target_link_libraries(${PROJECT_NAME}
+    PUBLIC ${Boost_LIBRARIES}
     PUBLIC nlohmann_json::nlohmann_json
     PUBLIC tinyxml2::tinyxml2
     PUBLIC fmt::fmt-header-only
-    PUBLIC simple-cryptography
+    # PUBLIC simple-cryptography
 )
 
 if(APPLE)
@@ -65,6 +65,7 @@ if(APPLE)
 endif()
 
 target_include_directories(${PROJECT_NAME}
+    PUBLIC ${Boost_INCLUDE_DIRS}
     PUBLIC ${PROJECT_SOURCE_DIR}
 )
 
