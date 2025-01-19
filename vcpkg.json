@@ -3,9 +3,11 @@
   "name": "data-backup-module",
   "version-string": "0.1.0",
   "dependencies": [
-    "gflags",
-    "glog",
     "gtest",
+    "boost-algorithm",
+    "boost-beast",
+    "boost-url",
+    "boost-uuid",
     "nlohmann-json",
     "tinyxml2",
     "fmt"

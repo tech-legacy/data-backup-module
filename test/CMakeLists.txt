@@ -17,13 +17,12 @@ find_package(GTest CONFIG REQUIRED)
 
 add_executable(${PROJECT_NAME}
     common_test.cpp
-    fmt_test.cpp
-    hardware_test.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}
     PRIVATE data-backup
     PRIVATE GTest::gtest_main
+    PUBLIC simple-cryptography
 )
 
 target_include_directories(${PROJECT_NAME}

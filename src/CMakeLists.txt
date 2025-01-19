@@ -18,12 +18,6 @@ message(STATUS "[${PROJECT_NAME}] PROJECT_SOURCE_DIR : ${PROJECT_SOURCE_DIR}")
 # message(STATUS "[${PROJECT_NAME}] Boost_LIBRARY_DIRS : ${Boost_LIBRARY_DIRS}")
 # include_directories(${Boost_INCLUDE_DIRS})
 
-# 引入 gflags
-find_package(gflags CONFIG REQUIRED)
-
-# 引入 glog
-find_package(glog CONFIG REQUIRED)
-
 # 引入 nlohmann-json
 find_package(nlohmann_json CONFIG REQUIRED)
 
@@ -50,17 +44,16 @@ file(GLOB_RECURSE include_headers
     impl/stl_threadtimer_impl.h
 )
 
-add_library(${PROJECT_NAME} STATIC
+add_library(${PROJECT_NAME} SHARED
     sample/sample_tools.cpp # needed
     ${include_headers}
 )
 
 target_link_libraries(${PROJECT_NAME}
-    PUBLIC gflags::gflags
-    PUBLIC glog::glog
     PUBLIC nlohmann_json::nlohmann_json
     PUBLIC tinyxml2::tinyxml2
     PUBLIC fmt::fmt-header-only
+    PUBLIC simple-cryptography
 )
 
 if(APPLE)
