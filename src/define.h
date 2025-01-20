@@ -13,24 +13,26 @@
 #pragma warning(disable:4566)
 #endif
 
-#ifdef _WIN32
-#   ifdef DATA_BACKUP_LIB_EXPORT
-#       define DATA_BACKUP_LIB_API __declspec(dllexport)
-#   else
-#       define DATA_BACKUP_LIB_API __declspec(dllimport)
-#   endif
-#elif __APPLE__
-#   define DATA_BACKUP_LIB_API __attribute__((visibility("default")))
-#elif __linux__
-#   define DATA_BACKUP_LIB_API __attribute__((visibility("default")))
-#else
-#   error "Unknown compiler"
-#endif
+//#ifdef _WIN32
+//#   ifdef DATA_BACKUP_LIB_EXPORT
+//#       define DATA_BACKUP_LIB_API __declspec(dllexport)
+//#   else
+//#       define DATA_BACKUP_LIB_API __declspec(dllimport)
+//#   endif
+//#elif __APPLE__
+//#   define DATA_BACKUP_LIB_API __attribute__((visibility("default")))
+//#elif __linux__
+//#   define DATA_BACKUP_LIB_API __attribute__((visibility("default")))
+//#else
+//#   error "Unknown compiler"
+//#endif
+//
+//#ifdef __cplusplus
+//extern "C" {
+//#endif //__cplusplus
+//// todo
+//#ifdef __cplusplus
+//}
+//#endif //__cplusplus
 
-#ifdef __cplusplus
-extern "C" {
-#endif //__cplusplus
-// todo
-#ifdef __cplusplus
-}
-#endif //__cplusplus
+#define DATA_BACKUP_LIB_API

@@ -45,15 +45,15 @@ file(GLOB_RECURSE include_headers
     DataBackup.h
 )
 
-add_library(${PROJECT_NAME} SHARED
+add_library(${PROJECT_NAME} STATIC
     DataBackup.cpp
     ${include_headers}
 )
 
 # dynamic 导出宏
-target_compile_definitions(${PROJECT_NAME}
-    PRIVATE DATA_BACKUP_LIB_EXPORT
-)
+#target_compile_definitions(${PROJECT_NAME}
+#    PRIVATE DATA_BACKUP_LIB_EXPORT
+#)
 
 target_link_libraries(${PROJECT_NAME}
     PUBLIC ${Boost_LIBRARIES}
